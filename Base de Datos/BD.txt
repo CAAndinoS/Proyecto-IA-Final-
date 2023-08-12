@@ -1,0 +1,18 @@
+CREATE DATABASE `proyecto` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+
+-- proyecto.diabetes definition
+
+CREATE TABLE `diabetes` (
+  `codigo` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `gender` int NOT NULL,
+  `age` int NOT NULL,
+  `hypertension` int NOT NULL,
+  `heart_disease` int NOT NULL,
+  `smoking_history` int NOT NULL,
+  `bmi` float NOT NULL,
+  `HbA1c_level` float NOT NULL,
+  `blood_glucose_level` int NOT NULL,
+  `diabetes` varchar(100) NOT NULL,
+  PRIMARY KEY (`codigo`)
+) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
