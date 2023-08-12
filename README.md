@@ -7,7 +7,7 @@ Este repositorio contiene el código para un Sistema de Predicción y Gestión d
 Antes de ejecutar la aplicación, asegúrate de tener las dependencias necesarias instaladas en tu sistema Linux:
 
 
-Bibliotecas de Python
+## Bibliotecas de Python
 ```bash
 pip install pandas scikit-learn xgboost joblib flask mysql-connector-python
 ```
