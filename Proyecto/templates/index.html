@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Predicción de Diabetes</title>
+    <!-- Enlazar a Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/">Inicio</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('data_viewer') }}">Ver Datos</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container mt-5">
+        <h1 class="display-4">Predicción de Diabetes</h1>
+        <form action="/predict" method="post" id="diagnosis-form">
+            <div class="form-group">
+                <label for="name">Nombre:</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="gender">Género:</label>
+                <select class="form-control" name="gender" id="gender">
+                    <option value="0">Masculino</option>
+                    <option value="1">Femenino</option>
+                    <option value="2">Otro</option>
+                </select>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="age">Edad:</label>
+                    <input type="number" class="form-control" name="age" id="age">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="hypertension">Hipertensión:</label>
+                    <select class="form-control" name="hypertension" id="hypertension">
+                        <option value="0">No</option>
+                        <option value="1">Sí</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="heart_disease">Enfermedad Cardíaca:</label>
+                    <select class="form-control" name="heart_disease" id="heart_disease">
+                        <option value="0">No</option>
+                        <option value="1">Sí</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="smoking_history">Historial de Fumado:</label>
+                    <select class="form-control" name="smoking_history" id="smoking_history">
+                        <option value="0">No actual</option>
+                        <option value="1">Anterior</option>
+                        <option value="2">No info</option>
+                        <option value="3">Actual</option>
+                        <option value="4">Nunca</option>
+                        <option value="5">Siempre</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="bmi">Índice de Masa Corporal (BMI):</label>
+                <input type="number" step="0.01" class="form-control" name="bmi" id="bmi" title="El Índice de Masa Corporal (BMI) es una medida que relaciona el peso y la altura para estimar si una persona tiene un peso corporal saludable o no. Puede calcularse dividiendo el peso (en kilogramos) entre el cuadrado de la altura (en metros).">
+            </div>
+
+            <div class="form-group">
+                <label for="HbA1c_level">Nivel de HbA1c:</label>
+                <input type="number" step="0.01" class="form-control" name="HbA1c_level" id="HbA1c_level" title="Ingresa el nivel de HbA1c en sangre. Este valor mide el promedio de glucosa en sangre durante los últimos 2 o 3 meses.">
+            </div>
+
+            <div class="form-group">
+                <label for="blood_glucose_level">Nivel de Glucosa en Sangre:</label>
+                <input type="number" class="form-control" name="blood_glucose_level" id="blood_glucose_level" title="Ingresa el nivel de glucosa en sangre. Este valor mide la concentración de glucosa (azúcar) en la sangre y es importante para la detección y control de la diabetes.">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Predecir</button>
+        </form>
+        <p id="prediction-result"></p>
+    </div>
+
+    <!-- Enlazar a Bootstrap JS y jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

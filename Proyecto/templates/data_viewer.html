@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Visor de Datos</title>
+    <!-- Agregar los enlaces a las librerías de Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <!-- Barra de navegación con enlace a la página index.html -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <!-- Modificar el enlace para apuntar a la página index.html -->
+            <a class="navbar-brand" href="/index">Formulario para la predicción</a>          
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h1>Datos de la Base de Datos</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Género</th>
+                    <th>Edad</th>
+                    <th>Hipertensión</th>
+                    <th>Enfermedad Cardíaca</th>
+                    <th>Historial de Fumado</th>
+                    <th>Índice de Masa Corporal (BMI)</th>
+                    <th>Nivel de HbA1c</th>
+                    <th>Nivel de Glucosa en Sangre</th>
+                    <th>Diabetes</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in data %}
+                <tr>
+                    <td>{{ row.name }}</td>
+                    <td>{{ row.gender }}</td>
+                    <td>{{ row.age }}</td>
+                    <td>{{ row.hypertension }}</td>
+                    <td>{{ row.heart_disease }}</td>
+                    <td>{{ row.smoking_history }}</td>
+                    <td>{{ row.bmi }}</td>
+                    <td>{{ row.HbA1c_level }}</td>
+                    <td>{{ row.blood_glucose_level }}</td>
+                    <td>{{ row.diabetes }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Enlazar a Bootstrap JS y jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+

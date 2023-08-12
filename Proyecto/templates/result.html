@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resultado de la Predicción</title>
+    <!-- Enlazar a Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <style>
+        /* Estilo para el texto del resultado */
+        #prediction-result {
+            font-size: 60px;
+            font-weight: bold;
+        }
+
+        /* Estilo para el texto de las recomendaciones */
+        #recommendations {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Barra de navegación con enlace a la página index.html -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <!-- Modificar el enlace para apuntar a la página index.html -->
+            <a class="navbar-brand" href="/index">Formulario para la predicción</a>          
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h1 class="display-4">Resultado de la Predicción</h1>
+        <p id="prediction-result"></p>
+
+        <!-- Contenedor para mostrar las recomendaciones -->
+        <div id="recommendations-container" style="display: none;">
+            <h3>Recomendaciones:</h3>
+            <p id="recommendations"></p>
+            <p>Es importante tener en cuenta que, a pesar de la alta exactitud de la predicción (97.24%), siempre es necesario consultar con un médico para obtener un diagnóstico preciso y evaluar cualquier resultado anormal. La predicción realizada aquí es solo una estimación y puede haber errores o factores no considerados que afecten los resultados.</p>
+        </div>
+    </div>
+
+    <!-- Enlazar a Bootstrap JS y jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Script para obtener el resultado de la URL y mostrarlo en la página -->
+    <script>
+        // Obtener el resultado almacenado en el localStorage
+        const predictionResult = localStorage.getItem('predictionResult');
+
+        // Mostrar el resultado en el párrafo con id 'prediction-result'
+        document.getElementById('prediction-result').innerText = predictionResult;
+
+        // Limpiar el resultado almacenado en el localStorage después de mostrarlo
+        localStorage.removeItem('predictionResult');
+
+        // Función para mostrar las recomendaciones según el resultado
+        function showRecommendations(result) {
+            const recommendationsContainer = document.getElementById('recommendations-container');
+            const recommendations = document.getElementById('recommendations');
+
+            // Definir las recomendaciones según el resultado
+            if (result === 'Tiene diabetes.') {
+                recommendations.innerHTML = 'Recomendaciones para pacientes con diabetes: <ul><li>Controlar el consumo de azúcar y carbohidratos.</li><li>Hacer ejercicio regularmente.</li><li>Seguir el plan de tratamiento médico y realizar controles periódicos.</li></ul>';
+            } else {
+                recommendations.innerHTML = 'Recomendaciones para pacientes sin diabetes: <ul><li>Mantener una dieta balanceada y saludable.</li><li>Hacer ejercicio regularmente.</li><li>Realizar chequeos médicos periódicos.</li></ul>';
+            }
+
+            // Mostrar el contenedor de recomendaciones
+            recommendationsContainer.style.display = 'block';
+        }
+
+        // Llamar a la función para mostrar las recomendaciones con el resultado actual
+        showRecommendations(predictionResult);
+    </script>
+</body>
+</html>
+
